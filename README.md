@@ -52,11 +52,29 @@ double Eq2(double x, double sigma, double y, double lambda, double alpha) //punt
     return f_ ;
 }
 
+void incomeCalc(int ExtraHours, int Soons, int Majors, double baseIncome, double DestineComp, double ChargeComp, double grossIncome, double netIncome)
+{
+    double irpfpercent;
+    double irpf;
+    
+    grossIncome = baseIncome + DestineComp + ChargeComp + (ExtraHours * 23);
+    irpfpercent = 24 - (2 * Soons) - Majors;
+    irpf = (grossIncome * irpfpercent) / 100;
+    netIncome = grossIncome - irpf;
+
+    printf("\nSueldo bruto: $%.2lf\n", grossIncome);
+    printf("Porcentaje de IRPF: %.0lf%%\n", irpfpercent);
+    printf("Retención por IRPF: $%.2lf\n", irpf);
+    printf("Sueldo neto: $%.2lf\n", netIncome);
+}
+
 int main() {
     int option, seconds;
+    int ExtraHours, Soons, Majors;
     double fahrenheit, radius, height;
     double r, a, b, c, d;
     double x=12, sigma=2.1836, y=3, lambda=1.11695, alpha=328.67;
+    double baseIncome, netIncome, grossIncome, DestineComp, ChargeComp;
 
     printf("\t\tTALLER TERCER COORTE\n");
     printf("Presentado por Gabriel Andrey Velasco Perafán\n\n");
@@ -69,7 +87,8 @@ int main() {
         printf("\t4. Calcular la nota final de informática\n");
         printf("\t5. Realizar la operación matemática\n");
         printf("\t6. Realizar la segunda ecuación matemática\n");
-        printf("\t7. Salir\n");
+        printf("\t7. Calcular el sueldo\n");
+        printf("\t8. Salir\n");
         printf("\nSeleccione una opción: ");
         scanf("%d", &option);
 
@@ -153,6 +172,22 @@ int main() {
                 printf("\nEl resultado de la operación es: %.4lf\n", f_);
                 break;
             case 7:
+                printf("\nCálculo de la nómina:\n");
+                printf("\nSueldo base: $");
+                scanf("%lf", &baseIncome);
+                printf("Complemento de destino: $");
+                scanf("%lf", &DestineComp);
+                printf("Complemento de cargo académico: $");
+                scanf("%lf", &ChargeComp);
+                printf("Horas extra realizadas: ");
+                scanf("%d", &ExtraHours);
+                printf("Hijos: ");
+                scanf("%d", &Soons);
+                printf("Mayores dependientes:");
+                scanf("%d", &Majors);
+                incomeCalc(ExtraHours, Soons, Majors, baseIncome, DestineComp, ChargeComp, grossIncome, netIncome);
+                break;
+            case 8:
                 printf("\n | Ha finalizado la ejecución del programa.\n");
                 printf(" | Presentado por Gabriel Andrey Velasco Perafán.\n | Hasta luego.\n");
                 break;
@@ -170,7 +205,7 @@ int main() {
         system("clear"); //Para Unix/Linux
         //system("cls"); //Para Windows
 
-    } while (option !=7);
+    } while (option !=8);
     
     printf("\n======================================================");
     printf("\n\t\t ¡Gracias, TOTALES!                               ");
@@ -178,4 +213,5 @@ int main() {
 
     return 0;
 }
+
 
