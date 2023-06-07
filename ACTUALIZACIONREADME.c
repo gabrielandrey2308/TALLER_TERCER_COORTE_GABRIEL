@@ -75,21 +75,33 @@ int main() {
     double r, a, b, c, d;
     double x=12, sigma=2.1836, y=3, lambda=1.11695, alpha=328.67;
     double baseIncome, netIncome, grossIncome, DestineComp, ChargeComp;
+    
+    int result1, result2, result3, a_=1, opt8; 
+	double result4, result5, d_=1.0;
+	
+	double side1, side2, angle, area;
 
-    printf("\t\tTALLER TERCER COORTE\n");
+	double capital, AInterest, term;
+    double ratio, fee, TPaid, interest, amortization;
+    int mnths;
+    system("clear");
+    printf("\n\t\tTALLER TERCER COORTE\n");
     printf("Presentado por Gabriel Andrey Velasco Perafán\n\n");
 
     do {
         printf("Menú inicial:\n\n");
-        printf("\t1. Calcular volumen de un cono\n");
-        printf("\t2. Convertir Fahrenheit a Celsius\n");
-        printf("\t3. Convertir tiempo en segundos\n");
-        printf("\t4. Calcular la nota final de informática\n");
-        printf("\t5. Realizar la operación matemática\n");
-        printf("\t6. Realizar la segunda ecuación matemática\n");
-        printf("\t7. Calcular el sueldo\n");
-        printf("\t8. Salir\n");
-        printf("\nSeleccione una opción: ");
+        printf("\t1.  Calcular volumen de un cono\n");
+        printf("\t2.  Convertir Fahrenheit a Celsius\n");
+        printf("\t3.  Convertir tiempo en segundos\n");
+        printf("\t4.  Calcular la nota final de informática\n");
+        printf("\t5.  Realizar la operación matemática\n");
+        printf("\t6.  Realizar la segunda ecuación matemática\n");
+        printf("\t7.  Calcular el sueldo\n");
+        printf("\t8.  Punto 8 del taller (preguntas de lógica)\n");
+        printf("\t9.  Calcular el área de un triángulo\n");
+        printf("\t10. Calcular préstamo hipotecario\n");
+        printf("\t11. Salir\n");
+        printf("\nIngrese un número para seleccionar una opción: ");
         scanf("%d", &option);
 
         //Limpiar la pantalla o consola
@@ -188,6 +200,88 @@ int main() {
                 incomeCalc(ExtraHours, Soons, Majors, baseIncome, DestineComp, ChargeComp, grossIncome, netIncome);
                 break;
             case 8:
+                printf("\tHa seleccionado revisar los resultados del punto 8.\n\n");
+                printf("\t1. a = 46 % 9 + 4 * 4 ‐ 2;\n");
+                printf("\t2. a = 45 + 43 % 5 * (23 * 3 % 2);\n");
+                printf("\t3. a = 45 + 45 * 50 % a‐‐;\n");
+                printf("\t4. d = 1.5 * 3 + (++d);\n");
+                printf("\t5. d = 1.5 * 3 + d++;\n");
+                printf("\t6. a %= 3 / a + 3;\n");
+                do{
+            	printf("\nSeleccione una opción ingresando su número:\n");
+            	scanf("%d", &opt8);
+            
+            		switch(opt8){
+            			case 2:
+            				result1 = 46 % 9 + 4 * 4 - 2;
+            				printf("La forma 1 da como resultado: %d", result1);
+            			break;
+            			case 3:
+            				result2 = 45 + 43 % 5 * (23 * 3 % 2);
+            				printf("La forma 2 da como resultado: %d", result2);
+            			break;
+            			case 4:
+            				result3 = 45 + 45 * 50 % a_--;
+            				printf("La forma 3 da como resultado: %d", result3);
+            			break;
+            			case 5:
+            				result4 = 1.5 * 3 + (++d_);
+            				printf("La forma 4 da como resultado: %lf", result4);
+            			break;
+            			case 6:
+            				result5 = 1.5 * 3 + d_++;
+            				printf("La forma 5 da como resultado: %lf", result5);
+            			break;
+            			case 1:
+            				a_ = a_ % (3 / a_ + 3);
+            				printf("La forma 6 da como resultado: %d", a_);
+            				printf("\n | Por cuestiones de sintaxis en la lógica del");
+            				printf("\n | programa se decidió presentar este ejercicio primero.");
+            			break;
+            			case 7:
+            			    printf("\nVolviendo al menú inicial...");
+            			break;
+            			default:
+            				printf("\nintente otra opción");
+            			break;
+            			}
+            		printf("\n | Presione enter para continuar");
+            		getchar();
+            		
+            	}while(opt8 != 7);
+            	break;
+            case 9:
+                printf("\tHa seleccionado calcular el area del triángulo.\n\n");
+                printf("Ingrese el valor del lado 1: ");
+                scanf("%lf", &side1);
+                printf("Ingrese el valor del lado 2: ");
+                scanf("%lf", &side2);
+                printf("Ingrese el valor del ángulo (en grados): ");
+                scanf("%lf", &angle);
+                double rad = angle * (M_PI / 180.0);
+                double sen = sin(rad);
+                area = 0.5 * side1 * side2 * sen;
+                printf("El área del triángulo es: %.2lf\n", area);
+                break;
+            case 10:
+                printf("\tHa seleccionado calcular el préstamo hipotecario.\n\n");
+                printf("Ingrese el capital prestado: ");
+                scanf("%lf", &capital);
+                printf("Ingrese el interés anual: ");
+                scanf("%lf", &AInterest);
+                printf("Ingrese el plazo en meses: ");
+                scanf("%d", &mnths);
+                ratio = AInterest / 12;
+                fee = (capital * ratio) / (1 - pow((1 + (ratio / 100)), -mnths));
+                TPaid = fee * mnths;
+                interest = TPaid - capital;
+                amortization = capital;
+                printf("\nCuota mensual: %.2lf\n", fee);
+                printf("\nTotal pagado: %.2lf\n", TPaid);
+                printf("\nCantidad de amortización: %.2lf\n", amortization);
+                printf("\nCantidad de intereses: %.2lf\n", interest);
+                break;
+            case 11:
                 printf("\n | Ha finalizado la ejecución del programa.\n");
                 printf(" | Presentado por Gabriel Andrey Velasco Perafán.\n | Hasta luego.\n");
                 break;
@@ -205,7 +299,7 @@ int main() {
         system("clear"); //Para Unix/Linux
         //system("cls"); //Para Windows
 
-    } while (option !=8);
+    } while (option != 11);
     
     printf("\n======================================================");
     printf("\n\t\t ¡Gracias, TOTALES!                               ");
@@ -213,5 +307,4 @@ int main() {
 
     return 0;
 }
-
 
