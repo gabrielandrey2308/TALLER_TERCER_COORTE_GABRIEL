@@ -84,6 +84,8 @@ int main() {
 	double capital, AInterest, term;
     double ratio, fee, TPaid, interest, amortization;
     int mnths;
+        float parcial1, taller1, quiz1, ejercicio1clase, quiz2, exposicion;
+    float definitiva;
     system("clear");
     printf("\n\t\tTALLER TERCER COORTE\n");
     printf("Presentado por Gabriel Andrey Velasco Perafán\n\n");
@@ -135,10 +137,24 @@ int main() {
                 printf("Ingrese el tiempo transcurrido en segundos: ");
                 scanf("%d", &seconds);
                 convertTime(seconds);
-                break;
+                 break;
             case 4:
-                printf("\tHa seleccionado calcular sus nota final de informática\n");
-                printf("\n | Lo sentimos, todavía no sabemos las notas :-¡\n");
+                printf("Parcial PR1: ");
+                scanf("%f", &parcial1);
+                printf("Taller PR1: ");
+                scanf("%f", &taller1);
+                printf("Quiz 1: ");
+                scanf("%f", &quiz1);                            
+                printf("Ejercicio Clase: ");
+                scanf("%f", &ejercicio1clase);
+                printf("Quiz 2:");
+                scanf("%f", &quiz2);
+                printf("Exposición: ");
+                scanf("%f", &exposicion);
+                float nota1 = (parcial1 * 0.8 + taller1 * 0.2 )*0.7;
+                float nota2 = (quiz1 * 0.25 + ejercicio1clase * 0.25 + quiz2 * 0.25 + exposicion * 0.25)* 0.3;
+                float definitiva = nota1 + nota2;
+                printf("La nota final obtenida es: %.2f\n", definitiva);
                 break;
             case 5:
                 printf("\tHa seleccionado efectuar la fórmula matemática.\n\n");
@@ -307,4 +323,3 @@ int main() {
 
     return 0;
 }
-
